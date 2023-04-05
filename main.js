@@ -14,13 +14,13 @@ fetch('./config.json')
 		// console.log(tmpall);
         All = tmpall.split(' ');
         Used = tmpused.split(' ');
-        // console.log(All);   
+        console.log("loaded config");  
 	})
 fetch('./text.json')
     .then((response) => response.json())
     .then((json) => {
 		Text = json;
-        // console.log(Text);
+        console.log("loaded text");
         initTable();
 	})
 const initTable = async () => {
@@ -35,7 +35,7 @@ const initTable = async () => {
     const btd = "</td>";
     const nothing = "-";
     let insideHtml = tbody;
-    console.log(All);
+    // console.log(All);
     for (let i = 0; i < 58; i++) {
         let id = All[i];
         let flag = false;
