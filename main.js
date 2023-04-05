@@ -24,9 +24,7 @@ fetch('./text.json')
         initTable();
 	})
 const initTable = async () => {
-    let result = document.createElement('table');
-    result.className = "tc mt";
-    result.id = 'res'
+    let result = document.getElementById('res');
     const tbody = "<tbody>";
     const tr = "<tr>";
     const btr = "</tr>";
@@ -45,9 +43,6 @@ const initTable = async () => {
         }
     }
     result.innerHTML = insideHtml;
-    node = document.getElementById('tb');
-    node.parentNode.insertBefore(result, node);
-    node.remove();
 }
 const changeTable = async (a, b) => {
     let result = document.getElementById('res');
@@ -96,6 +91,9 @@ document.getElementById('query').addEventListener('click', () => {
     }catch{
         log("输入格式错误");
     }
+})
+document.getElementById('show all').addEventListener('click', () => {
+    initTable();
 })
 
 
