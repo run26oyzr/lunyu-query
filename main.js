@@ -68,66 +68,64 @@ const changeTable = async (a, b) => {
     //     insideHtml += btr;
     // }
 }
-document.getElementById('query').addEventListener('click', () => {
-    clearLog();
-    try{
-        var id = document.getElementById('id').value;
-        var flag1 = false, flag2 = false;
-        for (let i = 0; i < 58; i++){
-            if (All[i] == id) flag1 = true;
-        }
-        for (let i = 0; i < 58; i++){
-            if (Used[i] == id) flag2 = true;
-        }
-        if (!flag1)
-            log("输入格式错误或该篇目未在领读范围内");
-        else if(!flag2){
-            changeTable(id, Text[id]);
-            // console.log(Text[id]);
-            log("查询成功");
-        }
-        else
-            log("该篇目已经被讲过");
-    }catch{
-        log("输入格式错误");
-    }
-})
+// document.getElementById('query').addEventListener('click', () => {
+//     clearLog();
+//     try{
+//         var id = document.getElementById('id').value;
+//         var flag1 = false, flag2 = false;
+//         for (let i = 0; i < 58; i++){
+//             if (All[i] == id) flag1 = true;
+//         }
+//         for (let i = 0; i < 58; i++){
+//             if (Used[i] == id) flag2 = true;
+//         }
+//         if (!flag1)
+//             log("输入格式错误或该篇目未在领读范围内");
+//         else if(!flag2){
+//             changeTable(id, Text[id]);
+//             // console.log(Text[id]);
+//             log("查询成功");
+//         }
+//         else
+//             log("该篇目已经被讲过");
+//     }catch{
+//         log("输入格式错误");
+//     }
+// })
 document.getElementById('show all').addEventListener('click', () => {
     initTable();
 })
 
 
 // 根据文本生成text.json
-// document.getElementById('query').addEventListener('click', () => {
-//     tmptext = document.getElementById('spl').value;
-//     console.log(tmptext);
-//     tmp2 = tmptext.split('\n');
-//     console.log(tmp2);
-//     let cnt = -1;
-//     Text = new Array();
-//     for (let i = 0; i < 95; i++){
-//         let tmp = tmp2[i].toString();
-//         console.log(tmp);
-//         if (tmp[0] < '0' || tmp[0] > '9'){
-//             Text[cnt] += "<br>";
-//             Text[cnt] += tmp2[i];
-//         }
-//         else{
-//             cnt++;
-//             Text[cnt] = "";
-//             for (let j = 0; j < tmp.length; j++){
-//                 if (tmp[j] != '.' && (tmp[j] < '0' || tmp[j] > '9') && tmp[j] != ' ')
-//                     Text[cnt] += tmp[j];
-//             }
-//         }
-//     }
-//     console.log(Text);
-//     for (let i = 0; i < 58; i++){
-//         log("\"");
-//         log(All[i]);
-//         log("\": \"");
-//         log(Text[i]);
-//         log("\",");
-//         log('\n');
-//     }
-// })
+document.getElementById('query').addEventListener('click', () => {
+    tmptext = document.getElementById('spl').value;
+    console.log(tmptext);
+    tmp2 = tmptext.split('\n');
+    console.log(tmp2);
+    let cnt = -1;
+    Text = new Array();
+    for (let i = 0; i < 90; i++){
+        let tmp = tmp2[i].toString();
+        if (tmp[0] < '0' || tmp[0] > '9'){
+            Text[cnt] += "~";
+            Text[cnt] += tmp2[i];
+        }
+        else{
+            cnt++;
+            Text[cnt] = "";
+            for (let j = 0; j < tmp.length; j++){
+                if (tmp[j] != '.' && (tmp[j] < '0' || tmp[j] > '9') && tmp[j] != ' ')
+                    Text[cnt] += tmp[j];
+            }
+        }
+    }
+    for (let i = 0; i < 70; i++){
+        log("【");
+        log(All[i]);
+        log("】 ");
+        log(Text[i]);
+        // log("\",");
+        log('\n');
+    }
+})
